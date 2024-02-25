@@ -1,10 +1,12 @@
 package Homework_Homework_Modul14_SpringBoot.testapp;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class NoteService implements INoteDaoService {
     private final List<Note> notes = new ArrayList<>();
 
