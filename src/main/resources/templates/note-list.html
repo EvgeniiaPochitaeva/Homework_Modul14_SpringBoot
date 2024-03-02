@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note List</title>
+</head>
+<body>
+<h1>Note List</h1>
+<ul>
+    <!-- Loop through notes and display them -->
+    <th:block th:each="note : ${note}">
+        <li>
+            <p>Title: <span th:text="${note.title}"></span></p>
+            <p>Content: <span th:text="${note.content}"></span></p>
+            <!-- Delete button -->
+            <form th:action="@{/note/delete}" method="post">
+                <input type="hidden" name="id" th:value="${note.id}" />
+                <button type="submit">Delete</button>
+            </form>
+            <!-- Edit button -->
+            <a th:href="@{/note/edit(id=${note.id})}">Edit</a>
+        </li>
+    </th:block>
+</ul>
+</body>
+</html>
