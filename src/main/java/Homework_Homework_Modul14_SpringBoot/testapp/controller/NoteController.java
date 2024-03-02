@@ -1,11 +1,12 @@
-package Homework_Homework_Modul14_SpringBoot.testapp;
+package Homework_Homework_Modul14_SpringBoot.testapp.controller;
 
+import Homework_Homework_Modul14_SpringBoot.testapp.entity.Note;
+import Homework_Homework_Modul14_SpringBoot.testapp.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.bind.annotation.GetMapping;

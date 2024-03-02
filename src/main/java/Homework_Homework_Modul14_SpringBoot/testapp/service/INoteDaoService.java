@@ -1,4 +1,6 @@
-package Homework_Homework_Modul14_SpringBoot.testapp;
+package Homework_Homework_Modul14_SpringBoot.testapp.service;
+
+import Homework_Homework_Modul14_SpringBoot.testapp.entity.Note;
 
 import java.util.List;
 

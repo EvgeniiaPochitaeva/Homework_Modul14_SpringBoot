@@ -1,8 +1,8 @@
-package Homework_Homework_Modul14_SpringBoot.testapp;
+package Homework_Homework_Modul14_SpringBoot.testapp.service;
 
-import lombok.RequiredArgsConstructor;
+import Homework_Homework_Modul14_SpringBoot.testapp.entity.Note;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 

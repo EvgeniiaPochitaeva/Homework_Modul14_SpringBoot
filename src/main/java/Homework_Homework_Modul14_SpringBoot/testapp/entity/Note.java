@@ -1,4 +1,4 @@
-package Homework_Homework_Modul14_SpringBoot.testapp;
+package Homework_Homework_Modul14_SpringBoot.testapp.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
