@@ -1,31 +1,35 @@
 package Homework_Homework_Modul14_SpringBoot.testapp.service;
 
 import Homework_Homework_Modul14_SpringBoot.testapp.entity.Note;
-import org.springframework.stereotype.Component;
+import Homework_Homework_Modul14_SpringBoot.testapp.repository.NoteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
 public class NoteService implements INoteDaoService {
-    private final List<Note> notes = new ArrayList<>();
+    private final NoteRepository noteRepository;
+
+    @Autowired
+    public NoteService(NoteRepository noteRepository) {
+        this.noteRepository = noteRepository;
+    }
 
     @Override
     public List<Note> listAll() {
-        return this.notes;
+        return noteRepository.findAll();
     }
 
     @Override
     public Note add(Note note) {
-        notes.add(note);
-        return note;
+        return noteRepository.save(note);
     }
 
     @Override
     public void deleteById(long id) {
-        Note noteToDelete = getById(id);
-        if (noteToDelete != null) {
-            notes.remove(noteToDelete);
+        if (noteRepository.existsById(id)) {
+            noteRepository.deleteById(id);
         } else {
             throw new IllegalArgumentException("Note with id " + id + " not found");
         }
@@ -33,10 +37,8 @@ public class NoteService implements INoteDaoService {
 
     @Override
     public void update(Note note) {
-        Note existingNote = getById(note.getId());
-        if (existingNote != null) {
-            existingNote.setTitle(note.getTitle());
-            existingNote.setContent(note.getContent());
+        if (noteRepository.existsById(note.getId())) {
+            noteRepository.save(note);
         } else {
             throw new IllegalArgumentException("Note with id " + note.getId() + " not found");
         }
@@ -44,11 +46,7 @@ public class NoteService implements INoteDaoService {
 
     @Override
     public Note getById(long id) {
-        for (Note note : notes) {
-            if (note.getId() == id) {
-                return note;
-            }
-        }
-        throw new IllegalArgumentException("Note with id " + id + " not found");
+        return noteRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Note with id " + id + " not found"));
     }
 }
