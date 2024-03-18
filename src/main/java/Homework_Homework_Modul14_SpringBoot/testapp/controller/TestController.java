@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class TestControler {
+public class TestController {
         @RequestMapping(value = "/test", method = {RequestMethod.GET})
         public ModelAndView getTest() {
             ModelAndView result = new ModelAndView("test");

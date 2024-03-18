@@ -1,32 +1,23 @@
-package Homework_Homework_Modul14_SpringBoot.testapp.service;
+package Homework_Homework_Modul14_SpringBoot.testapp.note;
 
-import Homework_Homework_Modul14_SpringBoot.testapp.entity.Note;
-import Homework_Homework_Modul14_SpringBoot.testapp.repository.NoteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
-public class NoteService implements INoteDaoService {
+public class NoteService {
     private final NoteRepository noteRepository;
 
-    @Autowired
-    public NoteService(NoteRepository noteRepository) {
-        this.noteRepository = noteRepository;
-    }
-
-    @Override
     public List<Note> listAll() {
         return noteRepository.findAll();
     }
-
-    @Override
     public Note add(Note note) {
-        return noteRepository.save(note);
+        noteRepository.save(note);
+        return note;
     }
 
-    @Override
     public void deleteById(long id) {
         if (noteRepository.existsById(id)) {
             noteRepository.deleteById(id);
@@ -35,7 +26,6 @@ public class NoteService implements INoteDaoService {
         }
     }
 
-    @Override
     public void update(Note note) {
         if (noteRepository.existsById(note.getId())) {
             noteRepository.save(note);
@@ -44,7 +34,6 @@ public class NoteService implements INoteDaoService {
         }
     }
 
-    @Override
     public Note getById(long id) {
         return noteRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Note with id " + id + " not found"));
