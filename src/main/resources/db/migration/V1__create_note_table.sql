@@ -3,3 +3,4 @@ CREATE TABLE IF NOT EXISTS Note (
     title VARCHAR(50),
     content VARCHAR(1000)
 );
+INSERT INTO Note (title, content) VALUES ('Shopping', 'Milk, bread, eggs');
